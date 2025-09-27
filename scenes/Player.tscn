@@ -21,3 +21,5 @@ texture = ExtResource("2_1o4i0")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = ExtResource("3_o5qv4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
