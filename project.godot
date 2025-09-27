@@ -42,6 +42,11 @@ down={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Characters"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://de66lt63seyxl"]
+[gd_scene load_steps=6 format=3 uid="uid://de66lt63seyxl"]
 
 [ext_resource type="Script" path="res://scripts/fire_bar.gd" id="1_bd7be"]
 [ext_resource type="Texture2D" uid="uid://vs2akb63ju0e" path="res://littletole.png" id="2_8duyt"]
 [ext_resource type="PackedScene" uid="uid://dopdr3vvbca2n" path="res://scenes/Player.tscn" id="3_kcplp"]
+[ext_resource type="PackedScene" uid="uid://cxo50fsg8ndao" path="res://scenes/Enemy.tscn" id="4_h21qx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_km1jp"]
 bg_color = Color(0.926599, 0.439431, 0.140096, 1)
@@ -31,7 +32,7 @@ position = Vector2(-137, 257.75)
 scale = Vector2(18.7089, 11.2628)
 texture = ExtResource("2_8duyt")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_kcplp")]
+[node name="Player" parent="." instance=ExtResource("3_kcplp")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(0, 3.05176e-05)
@@ -40,3 +41,6 @@ color = Color(0.0904823, 0.0904823, 0.0904823, 1)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0
 one_shot = true
+
+[node name="Enemy" parent="." instance=ExtResource("4_h21qx")]
+position = Vector2(416, 322)
