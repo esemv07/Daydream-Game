@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 @onready var animationplayer: AnimationPlayer = $Sprite2D/AnimationPlayer
-@onready var timer: Timer = $Timer
+@onready var timer: Timer = $"../Timer"
 @onready var light: PointLight2D = $PointLight2D
 
 @export var speed: int = 50
