@@ -106,6 +106,6 @@ show_percentage = false
 
 [node name="Littletole" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(433.00024, 129)
+position = Vector2(-1475.9999, 70)
 scale = Vector2(16.4684, 10.5513)
 texture = ExtResource("5_kgpqg")
