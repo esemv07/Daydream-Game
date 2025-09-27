@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://de66lt63seyxl"]
+[gd_scene load_steps=3 format=3 uid="uid://de66lt63seyxl"]
 
 [ext_resource type="Texture2D" uid="uid://vs2akb63ju0e" path="res://littletole.png" id="1_wtcfe"]
+[ext_resource type="PackedScene" uid="uid://dopdr3vvbca2n" path="res://Player.tscn" id="2_u14xi"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -8,3 +9,8 @@
 position = Vector2(-137, 257.75)
 scale = Vector2(18.7089, 11.2628)
 texture = ExtResource("1_wtcfe")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_u14xi")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.0904823, 0.0904823, 0.0904823, 1)
