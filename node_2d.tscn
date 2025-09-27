@@ -5,4 +5,6 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-137, 257.75)
+scale = Vector2(18.70886, 11.26282)
 texture = ExtResource("1_wtcfe")
