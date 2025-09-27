@@ -11,6 +11,8 @@ var can_take_damage = true
 
 
 func _physics_process(delta: float) -> void:
+	$HealthBar.value = health
+	
 	deal_with_damage()
 	
 	if player:
