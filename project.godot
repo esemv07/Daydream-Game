@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Daydream Game"
 run/main_scene="res://scenes/node_2d.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -56,7 +56,17 @@ melee_attack={
 2d_physics/layer_1="Environment"
 2d_physics/layer_2="Characters"
 
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Enemies"
+2d_physics/layer_3="Objects"
+2d_physics/layer_4="Player"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/decals/filter=0
+2d/snap/snap_2d_transforms_to_pixel=true

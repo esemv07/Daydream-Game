@@ -1,68 +1,86 @@
-[gd_scene load_steps=8 format=3 uid="uid://de66lt63seyxl"]
+```
+[gd_scene load_steps=9 format=4 uid="uid://de66lt63seyxl"]
 
-[ext_resource type="Script" path="res://scripts/fire_bar.gd" id="1_bd7be"]
-[ext_resource type="Texture2D" uid="uid://vs2akb63ju0e" path="res://littletole.png" id="2_8duyt"]
-[ext_resource type="PackedScene" uid="uid://dopdr3vvbca2n" path="res://scenes/Player.tscn" id="3_kcplp"]
 [ext_resource type="PackedScene" uid="uid://cxo50fsg8ndao" path="res://scenes/Enemy.tscn" id="4_h21qx"]
+[ext_resource type="Texture2D" uid="uid://cilhoxmw34bdc" path="res://testsheet.png" id="5_4vge2"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_km1jp"]
-bg_color = Color(0.926599, 0.439431, 0.140096, 1)
+[sub_resource type="CircleShape2D" id="CircleShape2D_yu4jt"]
+radius = 63.0079
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_af8m0"]
-bg_color = Color(0.675501, 0.228665, 0.272936, 0.462745)
+[sub_resource type="CircleShape2D" id="CircleShape2D_drggc"]
+radius = 220.009
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wi23"]
-bg_color = Color(0.196078, 0.47451, 0.243137, 1)
+[sub_resource type="SpriteFrames" id="SpriteFrames_6eyey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4vge2")
+}],
+"loop": true,
+"name": &"E",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4vge2")
+}],
+"loop": true,
+"name": &"N",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4vge2")
+}],
+"loop": true,
+"name": &"S",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4vge2")
+}],
+"loop": true,
+"name": &"W",
+"speed": 5.0
+}]
 
-[node name="Node2D" type="Node2D"]
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("4_h21qx") # Enemy scene kept as reference for now
+speed = 200
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+scale = Vector2(0.775, 0.775)
+shape = SubResource("CircleShape2D_yu4jt")
 
-[node name="LightLevelBar" type="ProgressBar" parent="CanvasLayer"]
-z_index = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 13.0
-offset_top = -42.0
-offset_right = 265.0
-offset_bottom = -15.0
-grow_vertical = 0
-theme_override_styles/background = SubResource("StyleBoxFlat_km1jp")
-fill_mode = 1
-show_percentage = false
-script = ExtResource("1_bd7be")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_6eyey")
+animation = &"S"
 
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
-offset_left = 877.0
-offset_top = 606.0
-offset_right = 1129.0
-offset_bottom = 633.0
-theme_override_styles/background = SubResource("StyleBoxFlat_af8m0")
-theme_override_styles/fill = SubResource("StyleBoxFlat_0wi23")
-value = 100.0
-show_percentage = false
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("5_4vge2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-137, 257.75)
-scale = Vector2(18.7089, 11.2628)
-texture = ExtResource("2_8duyt")
+[node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("3_kcplp")]
+[node name="PlayerHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-position = Vector2(0, 3.05176e-05)
-color = Color(0.0904823, 0.0904823, 0.0904823, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+shape = SubResource("CircleShape2D_drggc")
 
-[node name="LightingTimer" type="Timer" parent="."]
-wait_time = 45.0
-one_shot = true
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 1.5
 
-[node name="Enemy" parent="." instance=ExtResource("4_h21qx")]
-position = Vector2(416, 322)
+[node name="DealDamageTimer" type="Timer" parent="."]
+wait_time = 0.5
 
-[node name="Enemy2" parent="." instance=ExtResource("4_h21qx")]
-position = Vector2(-553, 326)
-
-[node name="Enemy3" parent="." instance=ExtResource("4_h21qx")]
-position = Vector2(-78, 619)
+[connection signal="body_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_exited" from="PlayerHitbox" to="." method="_on_player_hitbox_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="DealDamageTimer" to="." method="_on_deal_damage_timer_timeout"]
+```
