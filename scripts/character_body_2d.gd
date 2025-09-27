@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var timer: Timer = $"../Timer"
 @onready var light: PointLight2D = $PointLight2D
 
-@export var speed: int = 50
+@export var speed: int = 96
 
 var direction: Vector2 = Vector2.ZERO
 
@@ -24,8 +24,17 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	velocity = direction * speed
+	velocity = direction * speed * 2
 	move_and_slide()
+	if (direction == Vector2.UP):
+		$Sprite2D.animation = "N"
+	else: if (direction == Vector2.RIGHT): 
+		$Sprite2D.animation = "E"
+	else: if (direction == Vector2.DOWN): 
+		$Sprite2D.animation = "S"
+	else: if (direction == Vector2.LEFT): 
+		$Sprite2D.animation = "W"
+	
 
 func vision_time_left():
 	var time_left = timer.time_left
