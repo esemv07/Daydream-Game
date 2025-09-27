@@ -70,7 +70,6 @@ z_index = 1
 position = Vector2(433, 126)
 
 [node name="Player" parent="." instance=ExtResource("1_c5w8f")]
-position = Vector2(89, 50)
 
 [node name="LightingTimer" type="Timer" parent="."]
 wait_time = 45.0
