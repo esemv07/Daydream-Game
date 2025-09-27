@@ -1,6 +1,6 @@
 extends ProgressBar
 
-@onready var timer: Timer = $"../../Timer"
+@onready var timer: Timer = $"../../LightingTimer"
 
 
 func _ready() -> void:
