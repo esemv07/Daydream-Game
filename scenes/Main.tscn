@@ -1,10 +1,17 @@
-[gd_scene load_steps=12 format=4 uid="uid://davvaka5glvee"]
+[gd_scene load_steps=20 format=4 uid="uid://davvaka5glvee"]
 
 [ext_resource type="PackedScene" uid="uid://dopdr3vvbca2n" path="res://scenes/Player.tscn" id="1_c5w8f"]
 [ext_resource type="PackedScene" uid="uid://cqfe7a065veqi" path="res://scenes/Enemy.tscn" id="1_feg2a"]
 [ext_resource type="Texture2D" uid="uid://cilhoxmw34bdc" path="res://testsheet.png" id="2_1qvon"]
 [ext_resource type="Script" uid="uid://cust5hbpsafy0" path="res://scripts/fire_bar.gd" id="4_886vo"]
+[ext_resource type="Texture2D" uid="uid://dskosp5yy4qi5" path="res://textures/fire/fire1.png" id="5_bjd11"]
 [ext_resource type="Texture2D" uid="uid://vs2akb63ju0e" path="res://littletole.png" id="5_kgpqg"]
+[ext_resource type="Texture2D" uid="uid://iv687rxm8iqy" path="res://textures/fire/fire2.png" id="6_qmy6f"]
+[ext_resource type="Texture2D" uid="uid://dvcum3k34q1al" path="res://textures/fire/fire3.png" id="7_mwfav"]
+[ext_resource type="Texture2D" uid="uid://difjn378l4ldx" path="res://textures/fire/fire4.png" id="8_3p2gp"]
+[ext_resource type="Texture2D" uid="uid://cmg7hrbkd3tt3" path="res://textures/fire/fire5.png" id="9_cvmbd"]
+[ext_resource type="Texture2D" uid="uid://bg0mrxhs71sff" path="res://textures/fire/fire6.png" id="10_ft6cd"]
+[ext_resource type="Texture2D" uid="uid://80m7d6w5brtn" path="res://textures/fire/fire7.png" id="11_bb450"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcsgt"]
 texture = ExtResource("2_1qvon")
@@ -46,6 +53,35 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 8
 sources/0 = SubResource("TileSetAtlasSource_vcsgt")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_nfivy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_bjd11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qmy6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mwfav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3p2gp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cvmbd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ft6cd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_bb450")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtliv"]
 bg_color = Color(0.882353, 0.47451, 0.192157, 0.737255)
 
@@ -80,6 +116,16 @@ visible = false
 color = Color(0.239347, 0.239347, 0.239347, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/MarginContainer"]
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_nfivy")
+frame_progress = 0.93187976
+centered = false
 
 [node name="LightLevelBar" type="ProgressBar" parent="CanvasLayer"]
 offset_left = 15.0
