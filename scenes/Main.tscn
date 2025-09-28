@@ -1,11 +1,10 @@
-[gd_scene load_steps=20 format=4 uid="uid://davvaka5glvee"]
+[gd_scene load_steps=19 format=4 uid="uid://davvaka5glvee"]
 
 [ext_resource type="PackedScene" uid="uid://dopdr3vvbca2n" path="res://scenes/Player.tscn" id="1_c5w8f"]
 [ext_resource type="PackedScene" uid="uid://cqfe7a065veqi" path="res://scenes/Enemy.tscn" id="1_feg2a"]
 [ext_resource type="Texture2D" uid="uid://cilhoxmw34bdc" path="res://testsheet.png" id="2_1qvon"]
-[ext_resource type="Script" uid="uid://cust5hbpsafy0" path="res://scripts/fire_bar.gd" id="4_886vo"]
+[ext_resource type="Script" path="res://scripts/fire_bar.gd" id="4_886vo"]
 [ext_resource type="Texture2D" uid="uid://dskosp5yy4qi5" path="res://textures/fire/fire1.png" id="5_bjd11"]
-[ext_resource type="Texture2D" uid="uid://vs2akb63ju0e" path="res://littletole.png" id="5_kgpqg"]
 [ext_resource type="Texture2D" uid="uid://iv687rxm8iqy" path="res://textures/fire/fire2.png" id="6_qmy6f"]
 [ext_resource type="Texture2D" uid="uid://dvcum3k34q1al" path="res://textures/fire/fire3.png" id="7_mwfav"]
 [ext_resource type="Texture2D" uid="uid://difjn378l4ldx" path="res://textures/fire/fire4.png" id="8_3p2gp"]
@@ -107,6 +106,7 @@ z_index = 1
 position = Vector2(433, 126)
 
 [node name="Player" parent="." instance=ExtResource("1_c5w8f")]
+position = Vector2(144, 0)
 
 [node name="LightingTimer" type="Timer" parent="."]
 wait_time = 45.0
@@ -125,7 +125,7 @@ offset_bottom = 40.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/MarginContainer"]
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_nfivy")
-frame_progress = 0.93187976
+frame_progress = 0.93188
 centered = false
 
 [node name="LightLevelBar" type="ProgressBar" parent="CanvasLayer"]
@@ -148,9 +148,3 @@ offset_bottom = 627.0
 theme_override_styles/background = SubResource("StyleBoxFlat_qlgm3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bsadn")
 show_percentage = false
-
-[node name="Littletole" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(433, 129)
-scale = Vector2(16.4684, 10.5513)
-texture = ExtResource("5_kgpqg")
