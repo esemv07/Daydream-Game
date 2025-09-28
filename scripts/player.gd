@@ -59,8 +59,9 @@ func _physics_process(delta: float) -> void:
 			$"../CanvasLayer/MarginContainer/Slot3".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot4".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot5".animation = "default"
-			Globals.melee = true
-			Globals.proj = false
+			if Globals.sword:
+				Globals.melee = true
+				Globals.proj = false
 	if Input.is_action_just_pressed("two"):
 		if (equipped == 2):
 			equipped = 0
@@ -76,8 +77,9 @@ func _physics_process(delta: float) -> void:
 			$"../CanvasLayer/MarginContainer/Slot3".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot4".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot5".animation = "default"
-			Globals.melee = false
-			Globals.proj = true
+			if Globals.spear:
+				Globals.melee = false
+				Globals.proj = true
 	if Input.is_action_just_pressed("three"):
 		if (equipped == 3):
 			equipped = 0
@@ -93,8 +95,9 @@ func _physics_process(delta: float) -> void:
 			$"../CanvasLayer/MarginContainer/Slot3".animation = "equipped"
 			$"../CanvasLayer/MarginContainer/Slot4".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot5".animation = "default"
-			Globals.melee = false
-			Globals.proj = true
+			if Globals.bow:
+				Globals.melee = false
+				Globals.proj = true
 	if Input.is_action_just_pressed("four"):
 		if (equipped == 4):
 			equipped = 0
@@ -110,8 +113,9 @@ func _physics_process(delta: float) -> void:
 			$"../CanvasLayer/MarginContainer/Slot3".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot4".animation = "equipped"
 			$"../CanvasLayer/MarginContainer/Slot5".animation = "default"
-			Globals.melee = true
-			Globals.proj = false
+			if Globals.sword2:
+				Globals.melee = true
+				Globals.proj = false
 	if Input.is_action_just_pressed("five"):
 		if (equipped == 5):
 			equipped = 0
@@ -127,8 +131,9 @@ func _physics_process(delta: float) -> void:
 			$"../CanvasLayer/MarginContainer/Slot3".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot4".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot5".animation = "equipped"
-			Globals.melee = true
-			Globals.proj = false
+			if Globals.hammer:
+				Globals.melee = true
+				Globals.proj = false
 	
 	if (direction == Vector2.UP):
 		$Sprite2D.animation = "N"
@@ -199,3 +204,16 @@ func shoot_arrow():
 		
 		var arrow_rotation = self.global_position.direction_to(get_global_mouse_position()).angle()
 		arrow.rotation = arrow_rotation
+
+
+func _on_pickup_area_area_entered(area: Area2D) -> void:
+	if area.name == "Spear":
+		Globals.spear = true
+	if area.name == "Sword2":
+		Globals.sword2 = true
+	if area.name == "Sword":
+		Globals.sword = true
+	if area.name == "Hammer":
+		Globals.hammer = true
+	if area.name == "Bow":
+		Globals.bow = true

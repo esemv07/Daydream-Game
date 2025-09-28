@@ -342,3 +342,8 @@ position = Vector2(1329, -2159)
 
 [node name="Bow" parent="Weapons" instance=ExtResource("27_5veqv")]
 position = Vector2(748, -907)
+
+[connection signal="body_entered" from="Weapons/Spear" to="Weapons/Spear" method="_on_body_entered"]
+[connection signal="body_entered" from="Weapons/Sword2" to="Weapons/Sword2" method="_on_body_entered"]
+[connection signal="body_entered" from="Weapons/Hammer" to="Weapons/Hammer" method="_on_body_entered"]
+[connection signal="body_entered" from="Weapons/Bow" to="Weapons/Bow" method="_on_body_entered"]

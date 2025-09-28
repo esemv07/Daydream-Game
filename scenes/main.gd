@@ -16,7 +16,15 @@ func _process(delta: float) -> void:
 		%Spear.visible = true
 	else:
 		%Spear.visible = false
-	if Globals.sword:
-		%SwordSlot.visible = true
+	if Globals.bow:
+		%Bow.visible = true
 	else:
-		%SwordSlot.visible = false
+		%Bow.visible = false
+	if Globals.sword2:
+		%Sword2.visible = true
+	else:
+		%Sword2.visible = false
+	if Globals.hammer:
+		%Hammer.visible = true
+	else:
+		%Hammer.visible = false
