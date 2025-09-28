@@ -372,6 +372,24 @@ position = Vector2(-2626, -6335)
 [node name="Enemy10" parent="Enemies" instance=ExtResource("1_feg2a")]
 position = Vector2(-4725, -7218)
 
+[node name="Enemy11" parent="Enemies" instance=ExtResource("1_feg2a")]
+position = Vector2(-5175, -9828)
+
+[node name="Enemy12" parent="Enemies" instance=ExtResource("1_feg2a")]
+position = Vector2(-3267, -9720)
+
+[node name="Enemy13" parent="Enemies" instance=ExtResource("1_feg2a")]
+position = Vector2(-1845, -10566)
+
+[node name="Enemy14" parent="Enemies" instance=ExtResource("1_feg2a")]
+position = Vector2(-189, -9558)
+
+[node name="Enemy15" parent="Enemies" instance=ExtResource("1_feg2a")]
+position = Vector2(1647, -10530)
+
+[node name="Enemy16" parent="Enemies" instance=ExtResource("1_feg2a")]
+position = Vector2(3267, -10116)
+
 [connection signal="body_entered" from="Weapons/Spear" to="Weapons/Spear" method="_on_body_entered"]
 [connection signal="body_entered" from="Weapons/Sword2" to="Weapons/Sword2" method="_on_body_entered"]
 [connection signal="body_entered" from="Weapons/Hammer" to="Weapons/Hammer" method="_on_body_entered"]
