@@ -92,6 +92,7 @@ wait_time = 1.5
 wait_time = 0.5
 
 [node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 position = Vector2(0, 40)

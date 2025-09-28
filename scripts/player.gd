@@ -209,11 +209,27 @@ func shoot_arrow():
 func _on_pickup_area_area_entered(area: Area2D) -> void:
 	if area.name == "Spear":
 		Globals.spear = true
+		if $"../CanvasLayer/MarginContainer/Slot2".animation == "equipped":
+			Globals.melee = false
+			Globals.proj = true
 	if area.name == "Sword2":
 		Globals.sword2 = true
+		if $"../CanvasLayer/MarginContainer/Slot4".animation == "equipped":
+			Globals.melee = true
+			Globals.proj = false
 	if area.name == "Sword":
 		Globals.sword = true
+		if $"../CanvasLayer/MarginContainer/Slot".animation == "equipped":
+			Globals.melee = true
+			Globals.proj = false
 	if area.name == "Hammer":
 		Globals.hammer = true
+		if $"../CanvasLayer/MarginContainer/Slot5".animation == "equipped":
+			Globals.melee = true
+			Globals.proj = false
 	if area.name == "Bow":
 		Globals.bow = true
+		if $"../CanvasLayer/MarginContainer/Slot3".animation == "equipped":
+			Globals.melee = false
+			Globals.proj = true
+	area.queue_free()
