@@ -100,7 +100,7 @@ func _physics_process(delta: float) -> void:
 		if (equipped == 5):
 			equipped = 0
 			print(equipped)
-			$"../CanvasLayer/MarginContainer/Slot2".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot5".animation = "default"
 		else:
 			equipped = 5
 			print(equipped)
