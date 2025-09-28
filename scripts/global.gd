@@ -9,6 +9,9 @@ var bow = false
 var sword2 = false
 var hammer = false
 
+var melee = false
+var proj = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

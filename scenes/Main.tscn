@@ -1,5 +1,6 @@
-[gd_scene load_steps=27 format=4 uid="uid://davvaka5glvee"]
+[gd_scene load_steps=37 format=4 uid="uid://davvaka5glvee"]
 
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_5y0tf"]
 [ext_resource type="PackedScene" uid="uid://dopdr3vvbca2n" path="res://scenes/Player.tscn" id="1_c5w8f"]
 [ext_resource type="PackedScene" uid="uid://cqfe7a065veqi" path="res://scenes/Enemy.tscn" id="1_feg2a"]
 [ext_resource type="Texture2D" uid="uid://cilhoxmw34bdc" path="res://testsheet.png" id="2_1qvon"]
@@ -15,8 +16,17 @@
 [ext_resource type="Texture2D" uid="uid://jmulqjjfsegx" path="res://textures/inventory/slot1.png" id="11_qmy6f"]
 [ext_resource type="Texture2D" uid="uid://dhku2byyt1nj" path="res://textures/inventory/slot2.png" id="12_3p2gp"]
 [ext_resource type="Texture2D" uid="uid://bp1hhorsdcvdn" path="res://textures/sacrificebutton.png" id="12_mwfav"]
+[ext_resource type="Texture2D" uid="uid://cg04nnsvi0j6k" path="res://textures/weapons/pixilart-drawing (4) 2.png" id="13_co3hi"]
 [ext_resource type="Texture2D" uid="uid://dotw543n8gj0x" path="res://textures/weapons/pixilart-drawing (1).png" id="14_uj2ak"]
+[ext_resource type="Texture2D" uid="uid://blomytp7ogmyr" path="res://textures/weapons/pixilart-drawing (2).png" id="15_cdcc2"]
+[ext_resource type="Texture2D" uid="uid://c4cwod2iryqvf" path="res://textures/weapons/pixilart-drawing (6).png" id="15_evotf"]
+[ext_resource type="Texture2D" uid="uid://dhtopsnlfmuhb" path="res://textures/weapons/pixilart-drawing (7).png" id="16_07fs0"]
 [ext_resource type="PackedScene" uid="uid://bu8x35i4qley5" path="res://scenes/Burger.tscn" id="16_ptce1"]
+[ext_resource type="PackedScene" uid="uid://coeeym6atpi70" path="res://scenes/Spear_Collect.tscn" id="23_mdacn"]
+[ext_resource type="PackedScene" uid="uid://c2i6wb2ck4242" path="res://scenes/Sword2.tscn" id="24_ic4ij"]
+[ext_resource type="PackedScene" uid="uid://crxpfte5g2vhr" path="res://scenes/Sword.tscn" id="25_cwm3c"]
+[ext_resource type="PackedScene" uid="uid://dva5oqnve4lom" path="res://scenes/Hammer.tscn" id="26_gto4d"]
+[ext_resource type="PackedScene" uid="uid://cjiytrle70wmt" path="res://scenes/Bow.tscn" id="27_5veqv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcsgt"]
 texture = ExtResource("2_1qvon")
@@ -138,6 +148,7 @@ bg_color = Color(0.881037, 0.251959, 0.0688568, 0.721569)
 bg_color = Color(0.0768001, 0.551678, 0.212649, 1)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_5y0tf")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(433, 129)
@@ -177,6 +188,13 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_cvmbd")
 centered = false
 
+[node name="Bow" type="Sprite2D" parent="CanvasLayer/MarginContainer/Slot3"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(10, 8)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("13_co3hi")
+
 [node name="Sacrifice" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
 visible = false
 position = Vector2(570, 450)
@@ -205,11 +223,25 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ft6cd")
 centered = false
 
+[node name="Sword2" type="Sprite2D" parent="CanvasLayer/MarginContainer/Slot4"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(8, 8)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("15_evotf")
+
 [node name="Slot5" type="AnimatedSprite2D" parent="CanvasLayer/MarginContainer"]
 position = Vector2(680, 560)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ft6cd")
 centered = false
+
+[node name="Hammer" type="Sprite2D" parent="CanvasLayer/MarginContainer/Slot5"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(8, 8)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("16_07fs0")
 
 [node name="Slot2" type="AnimatedSprite2D" parent="CanvasLayer/MarginContainer"]
 position = Vector2(470, 560)
@@ -217,7 +249,12 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ft6cd")
 centered = false
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MarginContainer/Slot2"]
+[node name="Spear" type="Sprite2D" parent="CanvasLayer/MarginContainer/Slot2"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(8, 8)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("15_cdcc2")
 
 [node name="Slot" type="AnimatedSprite2D" parent="CanvasLayer/MarginContainer"]
 position = Vector2(400, 560)
@@ -228,6 +265,7 @@ centered = false
 
 [node name="SwordSlot" type="Sprite2D" parent="CanvasLayer/MarginContainer/Slot"]
 unique_name_in_owner = true
+visible = false
 position = Vector2(8, 8)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("14_uj2ak")
@@ -283,7 +321,24 @@ text = "You Died :("
 position = Vector2(392, -115)
 
 [node name="Burger2" parent="Food" instance=ExtResource("16_ptce1")]
-position = Vector2(742, -153)
+position = Vector2(21, -1861)
 
 [node name="Burger3" parent="Food" instance=ExtResource("16_ptce1")]
-position = Vector2(478, -298)
+position = Vector2(492, -1224)
+
+[node name="Weapons" type="Node" parent="."]
+
+[node name="Spear" parent="Weapons" instance=ExtResource("23_mdacn")]
+position = Vector2(28, -1602)
+
+[node name="Sword2" parent="Weapons" instance=ExtResource("24_ic4ij")]
+position = Vector2(2354, -3431)
+
+[node name="Sword" parent="Weapons" instance=ExtResource("25_cwm3c")]
+position = Vector2(362, -311)
+
+[node name="Hammer" parent="Weapons" instance=ExtResource("26_gto4d")]
+position = Vector2(1329, -2159)
+
+[node name="Bow" parent="Weapons" instance=ExtResource("27_5veqv")]
+position = Vector2(748, -907)

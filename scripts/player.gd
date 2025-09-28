@@ -49,6 +49,8 @@ func _physics_process(delta: float) -> void:
 			equipped = 0
 			print(equipped)
 			$"../CanvasLayer/MarginContainer/Slot".animation = "default"
+			Globals.melee = false
+			Globals.proj = false
 		else:
 			equipped = 1
 			print(equipped)
@@ -57,11 +59,15 @@ func _physics_process(delta: float) -> void:
 			$"../CanvasLayer/MarginContainer/Slot3".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot4".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot5".animation = "default"
+			Globals.melee = true
+			Globals.proj = false
 	if Input.is_action_just_pressed("two"):
 		if (equipped == 2):
 			equipped = 0
 			print(equipped)
 			$"../CanvasLayer/MarginContainer/Slot2".animation = "default"
+			Globals.melee = false
+			Globals.proj = false
 		else:
 			equipped = 2
 			print(equipped)
@@ -70,11 +76,15 @@ func _physics_process(delta: float) -> void:
 			$"../CanvasLayer/MarginContainer/Slot3".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot4".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot5".animation = "default"
+			Globals.melee = false
+			Globals.proj = true
 	if Input.is_action_just_pressed("three"):
 		if (equipped == 3):
 			equipped = 0
 			print(equipped)
 			$"../CanvasLayer/MarginContainer/Slot3".animation = "default"
+			Globals.melee = false
+			Globals.proj = false
 		else:
 			equipped = 3
 			print(equipped)
@@ -83,11 +93,15 @@ func _physics_process(delta: float) -> void:
 			$"../CanvasLayer/MarginContainer/Slot3".animation = "equipped"
 			$"../CanvasLayer/MarginContainer/Slot4".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot5".animation = "default"
+			Globals.melee = false
+			Globals.proj = true
 	if Input.is_action_just_pressed("four"):
 		if (equipped == 4):
 			equipped = 0
 			print(equipped)
 			$"../CanvasLayer/MarginContainer/Slot4".animation = "default"
+			Globals.melee = false
+			Globals.proj = false
 		else:
 			equipped = 4
 			print(equipped)
@@ -96,11 +110,15 @@ func _physics_process(delta: float) -> void:
 			$"../CanvasLayer/MarginContainer/Slot3".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot4".animation = "equipped"
 			$"../CanvasLayer/MarginContainer/Slot5".animation = "default"
+			Globals.melee = true
+			Globals.proj = false
 	if Input.is_action_just_pressed("five"):
 		if (equipped == 5):
 			equipped = 0
 			print(equipped)
 			$"../CanvasLayer/MarginContainer/Slot5".animation = "default"
+			Globals.melee = false
+			Globals.proj = false
 		else:
 			equipped = 5
 			print(equipped)
@@ -109,6 +127,8 @@ func _physics_process(delta: float) -> void:
 			$"../CanvasLayer/MarginContainer/Slot3".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot4".animation = "default"
 			$"../CanvasLayer/MarginContainer/Slot5".animation = "equipped"
+			Globals.melee = true
+			Globals.proj = false
 	
 	if (direction == Vector2.UP):
 		$Sprite2D.animation = "N"
@@ -172,7 +192,7 @@ func _on_deal_damage_timer_timeout() -> void:
 func shoot_arrow():
 	print("shoooot")
 	
-	if REF_ARROW:
+	if REF_ARROW and Globals.proj:
 		var arrow = REF_ARROW.instantiate()
 		get_tree().current_scene.add_child(arrow)
 		arrow.global_position = self.global_position

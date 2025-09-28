@@ -9,14 +9,20 @@ var health = 100
 var player_in_attack_zone = false
 var can_take_damage = true
 var proj_in_hitbox = false
+var weapon_name = ""
+var weapon_path = ""
+var weapon_drop
 
 var weapons = {
-	"sword": "res://scenes/Sword.tscn",
-	"spear": "res://scenes/Spear_Collect.tscn",
-	"bow": "res://scenes/Bow.tscn",
-	"sword2": "res://scenes/Sword2.tscn",
-	"hammer": "",
+	"sword": preload("res://scenes/Sword.tscn"),
+	"spear": preload("res://scenes/Spear_Collect.tscn"),
+	"bow": preload("res://scenes/Bow.tscn"),
+	"sword2": preload("res://scenes/Sword2.tscn"),
+	"hammer": preload("res://scenes/Hammer.tscn"),
 }
+
+func _ready() -> void:
+	pass
 
 
 func _physics_process(delta: float) -> void:
@@ -62,12 +68,17 @@ func _on_enemy_hitbox_body_exited(body: Node2D) -> void:
 
 
 func deal_with_damage():
-	if player_in_attack_zone and Globals.player_current_attack == true:
+	if player_in_attack_zone and Globals.player_current_attack and Globals.melee:
 		if can_take_damage:
 			health -= 20
 			$TakeDamageTimer.start()
 			can_take_damage = false
 			if health <= 0:
+				var size = weapons.size()
+				var random = weapons.keys()[randi() % size]
+				weapon_path = weapons[random].instantiate()
+				weapon_path.position = position
+				print("dropped")
 				self.queue_free()
 	elif proj_in_hitbox:
 		print("detected")
@@ -77,6 +88,11 @@ func deal_with_damage():
 			can_take_damage = false
 			proj_in_hitbox = false
 			if health <= 0:
+				var size = weapons.size()
+				var random = weapons.keys()[randi() % size]
+				weapon_path = weapons[random].instantiate()
+				weapon_path.position = position
+				print("dropped")
 				self.queue_free()
 
 
