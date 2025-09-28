@@ -6,7 +6,7 @@ var direction: Vector2
 
 func _physics_process(delta: float) -> void:
 	direction = Vector2.RIGHT.rotated(rotation)
-	global_position += direction * speed * delta
+	global_position += direction * speed * delta * 2
 
 
 func destroy():

@@ -1,10 +1,9 @@
-[gd_scene load_steps=22 format=4 uid="uid://davvaka5glvee"]
-[gd_scene load_steps=19 format=4 uid="uid://davvaka5glvee"]
+[gd_scene load_steps=24 format=4 uid="uid://davvaka5glvee"]
 
 [ext_resource type="PackedScene" uid="uid://dopdr3vvbca2n" path="res://scenes/Player.tscn" id="1_c5w8f"]
 [ext_resource type="PackedScene" uid="uid://cqfe7a065veqi" path="res://scenes/Enemy.tscn" id="1_feg2a"]
 [ext_resource type="Texture2D" uid="uid://cilhoxmw34bdc" path="res://testsheet.png" id="2_1qvon"]
-[ext_resource type="Script" path="res://scripts/fire_bar.gd" id="4_886vo"]
+[ext_resource type="Script" uid="uid://cust5hbpsafy0" path="res://scripts/fire_bar.gd" id="4_886vo"]
 [ext_resource type="Texture2D" uid="uid://dskosp5yy4qi5" path="res://textures/fire/fire1.png" id="5_bjd11"]
 [ext_resource type="Texture2D" uid="uid://iv687rxm8iqy" path="res://textures/fire/fire2.png" id="6_qmy6f"]
 [ext_resource type="Texture2D" uid="uid://dvcum3k34q1al" path="res://textures/fire/fire3.png" id="7_mwfav"]
@@ -13,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bg0mrxhs71sff" path="res://textures/fire/fire6.png" id="10_ft6cd"]
 [ext_resource type="Texture2D" uid="uid://80m7d6w5brtn" path="res://textures/fire/fire7.png" id="11_bb450"]
 [ext_resource type="Texture2D" uid="uid://jmulqjjfsegx" path="res://textures/inventory/slot1.png" id="11_qmy6f"]
+[ext_resource type="Texture2D" uid="uid://dhku2byyt1nj" path="res://textures/inventory/slot2.png" id="12_3p2gp"]
 [ext_resource type="Texture2D" uid="uid://bp1hhorsdcvdn" path="res://textures/sacrificebutton.png" id="12_mwfav"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcsgt"]
@@ -84,6 +84,44 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_cvmbd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_qmy6f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_3p2gp")
+}],
+"loop": true,
+"name": &"equipped",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ft6cd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_qmy6f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_3p2gp")
+}],
+"loop": true,
+"name": &"equipped",
+"speed": 5.0
+}]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtliv"]
 bg_color = Color(0.882353, 0.47451, 0.192157, 0.737255)
 
@@ -131,10 +169,10 @@ sprite_frames = SubResource("SpriteFrames_nfivy")
 frame_progress = 0.93188
 centered = false
 
-[node name="Slot" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
+[node name="Slot3" type="AnimatedSprite2D" parent="CanvasLayer/MarginContainer"]
 position = Vector2(540, 560)
 scale = Vector2(4, 4)
-texture = ExtResource("11_qmy6f")
+sprite_frames = SubResource("SpriteFrames_cvmbd")
 centered = false
 
 [node name="Sacrifice" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
@@ -159,28 +197,29 @@ icon = ExtResource("12_mwfav")
 flat = true
 icon_alignment = 1
 
-[node name="Slot4" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
+[node name="Slot4" type="AnimatedSprite2D" parent="CanvasLayer/MarginContainer"]
 position = Vector2(610, 560)
 scale = Vector2(4, 4)
-texture = ExtResource("11_qmy6f")
+sprite_frames = SubResource("SpriteFrames_ft6cd")
 centered = false
 
-[node name="Slot5" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
+[node name="Slot5" type="AnimatedSprite2D" parent="CanvasLayer/MarginContainer"]
 position = Vector2(680, 560)
 scale = Vector2(4, 4)
-texture = ExtResource("11_qmy6f")
+sprite_frames = SubResource("SpriteFrames_ft6cd")
 centered = false
 
-[node name="Slot2" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
+[node name="Slot2" type="AnimatedSprite2D" parent="CanvasLayer/MarginContainer"]
 position = Vector2(470, 560)
 scale = Vector2(4, 4)
-texture = ExtResource("11_qmy6f")
+sprite_frames = SubResource("SpriteFrames_ft6cd")
 centered = false
 
-[node name="Slot3" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
+[node name="Slot" type="AnimatedSprite2D" parent="CanvasLayer/MarginContainer"]
 position = Vector2(400, 560)
 scale = Vector2(4, 4)
-texture = ExtResource("11_qmy6f")
+sprite_frames = SubResource("SpriteFrames_ft6cd")
+animation = &"equipped"
 centered = false
 
 [node name="LightLevelBar" type="ProgressBar" parent="CanvasLayer"]

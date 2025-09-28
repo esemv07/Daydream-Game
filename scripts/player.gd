@@ -13,6 +13,7 @@ var health: int = Globals.player_health
 var enemy_in_range = false
 var enemy_attack_cooldown = true
 var shooting = false
+var equipped = 1
 
 var attack_ip = false
 var current_dir = "none"
@@ -42,6 +43,72 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("projectile_attack"):
 		shoot_arrow()
+	
+	if Input.is_action_just_pressed("one"):
+		if (equipped == 1):
+			equipped = 0
+			print(equipped)
+			$"../CanvasLayer/MarginContainer/Slot".animation = "default"
+		else:
+			equipped = 1
+			print(equipped)
+			$"../CanvasLayer/MarginContainer/Slot".animation = "equipped"
+			$"../CanvasLayer/MarginContainer/Slot2".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot3".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot4".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot5".animation = "default"
+	if Input.is_action_just_pressed("two"):
+		if (equipped == 2):
+			equipped = 0
+			print(equipped)
+			$"../CanvasLayer/MarginContainer/Slot2".animation = "default"
+		else:
+			equipped = 2
+			print(equipped)
+			$"../CanvasLayer/MarginContainer/Slot".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot2".animation = "equipped"
+			$"../CanvasLayer/MarginContainer/Slot3".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot4".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot5".animation = "default"
+	if Input.is_action_just_pressed("three"):
+		if (equipped == 3):
+			equipped = 0
+			print(equipped)
+			$"../CanvasLayer/MarginContainer/Slot3".animation = "default"
+		else:
+			equipped = 3
+			print(equipped)
+			$"../CanvasLayer/MarginContainer/Slot".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot2".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot3".animation = "equipped"
+			$"../CanvasLayer/MarginContainer/Slot4".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot5".animation = "default"
+	if Input.is_action_just_pressed("four"):
+		if (equipped == 4):
+			equipped = 0
+			print(equipped)
+			$"../CanvasLayer/MarginContainer/Slot4".animation = "default"
+		else:
+			equipped = 4
+			print(equipped)
+			$"../CanvasLayer/MarginContainer/Slot".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot2".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot3".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot4".animation = "equipped"
+			$"../CanvasLayer/MarginContainer/Slot5".animation = "default"
+	if Input.is_action_just_pressed("five"):
+		if (equipped == 5):
+			equipped = 0
+			print(equipped)
+			$"../CanvasLayer/MarginContainer/Slot2".animation = "default"
+		else:
+			equipped = 5
+			print(equipped)
+			$"../CanvasLayer/MarginContainer/Slot".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot2".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot3".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot4".animation = "default"
+			$"../CanvasLayer/MarginContainer/Slot5".animation = "equipped"
 	
 	if (direction == Vector2.UP):
 		$Sprite2D.animation = "N"
