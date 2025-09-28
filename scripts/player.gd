@@ -14,6 +14,7 @@ var enemy_in_range = false
 var enemy_attack_cooldown = true
 var shooting = false
 var equipped = 1
+var dead = false
 
 var attack_ip = false
 var current_dir = "none"
@@ -31,12 +32,21 @@ func _process(delta: float) -> void:
 	var texture_scale = vision_time_left() / 15
 	light.set_texture_scale(texture_scale)
 	
+	if timer.time_left <= 0:
+			$"../CanvasLayer/Littletole".visible = true
+			$"../CanvasLayer/Label".visible = true
+			$"../CanvasModulate".visible = false
+			queue_free()
+	
 	# Health
 	health_bar.value = Globals.player_health
 
 
 func _physics_process(delta: float) -> void:
-	velocity = direction * speed
+	if !dead:
+		velocity = direction * speed
+	else:
+		velocity = Vector2.ZERO
 	move_and_slide()
 	enemy_attack()
 	attack()
@@ -135,13 +145,13 @@ func _physics_process(delta: float) -> void:
 				Globals.melee = true
 				Globals.proj = false
 	
-	if (direction == Vector2.UP):
+	if (direction == Vector2.UP) and !dead:
 		$Sprite2D.animation = "N"
-	else: if (direction == Vector2.RIGHT): 
+	else: if (direction == Vector2.RIGHT) and !dead: 
 		$Sprite2D.animation = "E"
-	else: if (direction == Vector2.DOWN): 
+	else: if (direction == Vector2.DOWN) and !dead: 
 		$Sprite2D.animation = "S"
-	else: if (direction == Vector2.LEFT): 
+	else: if (direction == Vector2.LEFT) and !dead: 
 		$Sprite2D.animation = "W"
 
 func vision_time_left():
@@ -233,3 +243,12 @@ func _on_pickup_area_area_entered(area: Area2D) -> void:
 			Globals.melee = false
 			Globals.proj = true
 	area.queue_free()
+	
+	if area.name == "EndTrigger":
+		dead = true
+		$Sprite2D.play("die")
+		$DeathTimer.start()
+
+
+func _on_death_timer_timeout() -> void:
+	$ColorRect.visible = true

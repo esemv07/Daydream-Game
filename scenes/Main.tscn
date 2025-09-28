@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://davvaka5glvee"]
+[gd_scene load_steps=41 format=4 uid="uid://davvaka5glvee"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_5y0tf"]
 [ext_resource type="PackedScene" uid="uid://dopdr3vvbca2n" path="res://scenes/Player.tscn" id="1_c5w8f"]
@@ -22,8 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://c4cwod2iryqvf" path="res://textures/weapons/pixilart-drawing (6).png" id="15_evotf"]
 [ext_resource type="Texture2D" uid="uid://dhtopsnlfmuhb" path="res://textures/weapons/pixilart-drawing (7).png" id="16_07fs0"]
 [ext_resource type="PackedScene" uid="uid://bu8x35i4qley5" path="res://scenes/Burger.tscn" id="16_ptce1"]
+[ext_resource type="PackedScene" uid="uid://6qdonci6f4uf" path="res://scenes/Sushi.tscn" id="22_m60md"]
 [ext_resource type="PackedScene" uid="uid://coeeym6atpi70" path="res://scenes/Spear_Collect.tscn" id="23_mdacn"]
+[ext_resource type="PackedScene" uid="uid://v8i38q166hsr" path="res://scenes/FriedEgg.tscn" id="23_tcodo"]
 [ext_resource type="PackedScene" uid="uid://c2i6wb2ck4242" path="res://scenes/Sword2.tscn" id="24_ic4ij"]
+[ext_resource type="PackedScene" uid="uid://dy1vsg4e4hm0r" path="res://scenes/IceCream.tscn" id="24_lw45e"]
 [ext_resource type="PackedScene" uid="uid://crxpfte5g2vhr" path="res://scenes/Sword.tscn" id="25_cwm3c"]
 [ext_resource type="PackedScene" uid="uid://dva5oqnve4lom" path="res://scenes/Hammer.tscn" id="26_gto4d"]
 [ext_resource type="PackedScene" uid="uid://cjiytrle70wmt" path="res://scenes/Bow.tscn" id="27_5veqv"]
@@ -147,6 +150,9 @@ bg_color = Color(0.881037, 0.251959, 0.0688568, 0.721569)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsadn"]
 bg_color = Color(0.0768001, 0.551678, 0.212649, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wksqk"]
+size = Vector2(296, 267)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5y0tf")
 
@@ -157,14 +163,14 @@ tile_map_data = PackedByteArray("AAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAAAAP7/AAAAAAE
 tile_set = SubResource("TileSet_c01mt")
 
 [node name="Player" parent="." instance=ExtResource("1_c5w8f")]
-position = Vector2(144, 0)
+position = Vector2(190, 36)
 
 [node name="LightingTimer" type="Timer" parent="."]
 wait_time = 45.0
+one_shot = true
 autostart = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.136826, 0.136826, 0.136826, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -323,6 +329,15 @@ position = Vector2(21, -1861)
 [node name="Burger3" parent="Food" instance=ExtResource("16_ptce1")]
 position = Vector2(492, -1224)
 
+[node name="Sushi" parent="Food" instance=ExtResource("22_m60md")]
+position = Vector2(827, -2180)
+
+[node name="FriedEgg" parent="Food" instance=ExtResource("23_tcodo")]
+position = Vector2(821, -893)
+
+[node name="IceCream" parent="Food" instance=ExtResource("24_lw45e")]
+position = Vector2(1798, -3027)
+
 [node name="Weapons" type="Node" parent="."]
 
 [node name="Spear" parent="Weapons" instance=ExtResource("23_mdacn")]
@@ -390,7 +405,18 @@ position = Vector2(1647, -10530)
 [node name="Enemy16" parent="Enemies" instance=ExtResource("1_feg2a")]
 position = Vector2(3267, -10116)
 
+[node name="EndTrigger" type="Area2D" parent="."]
+position = Vector2(3886, -12427)
+collision_layer = 15
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndTrigger"]
+position = Vector2(13, 0.5)
+shape = SubResource("RectangleShape2D_wksqk")
+
 [connection signal="body_entered" from="Weapons/Spear" to="Weapons/Spear" method="_on_body_entered"]
 [connection signal="body_entered" from="Weapons/Sword2" to="Weapons/Sword2" method="_on_body_entered"]
 [connection signal="body_entered" from="Weapons/Hammer" to="Weapons/Hammer" method="_on_body_entered"]
 [connection signal="body_entered" from="Weapons/Bow" to="Weapons/Bow" method="_on_body_entered"]
+[connection signal="area_entered" from="EndTrigger" to="." method="_on_end_trigger_area_entered"]
+[connection signal="body_entered" from="EndTrigger" to="." method="_on_end_trigger_body_entered"]

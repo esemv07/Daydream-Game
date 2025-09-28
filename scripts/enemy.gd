@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 @onready var player = $"../Player"
+@onready var timer = $"../../LightingTimer"
 
 var speed = 50
 var motion = Vector2.ZERO
@@ -13,13 +14,6 @@ var weapon_name = ""
 var weapon_path = ""
 var weapon_drop
 
-var weapons = {
-	"sword": preload("res://scenes/Sword.tscn"),
-	"spear": preload("res://scenes/Spear_Collect.tscn"),
-	"bow": preload("res://scenes/Bow.tscn"),
-	"sword2": preload("res://scenes/Sword2.tscn"),
-	"hammer": preload("res://scenes/Hammer.tscn"),
-}
 
 func _ready() -> void:
 	pass
@@ -74,12 +68,10 @@ func deal_with_damage():
 			$TakeDamageTimer.start()
 			can_take_damage = false
 			if health <= 0:
-				var size = weapons.size()
-				var random = weapons.keys()[randi() % size]
-				weapon_path = weapons[random].instantiate()
-				weapon_path.position = position
 				print("dropped")
 				self.queue_free()
+				timer.wait_time = timer.time_left + 10
+				timer.start()
 	elif proj_in_hitbox:
 		print("detected")
 		if can_take_damage:
@@ -88,12 +80,10 @@ func deal_with_damage():
 			can_take_damage = false
 			proj_in_hitbox = false
 			if health <= 0:
-				var size = weapons.size()
-				var random = weapons.keys()[randi() % size]
-				weapon_path = weapons[random].instantiate()
-				weapon_path.position = position
 				print("dropped")
 				self.queue_free()
+				timer.wait_time = timer.time_left + 10
+				timer.start()
 
 
 func _on_take_damage_timer_timeout() -> void:

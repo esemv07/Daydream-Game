@@ -9,3 +9,4 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	value = timer.time_left
+	$"../MarginContainer/AnimatedSprite2D".scale = Vector2(8,8) * (timer.time_left/45)

@@ -28,3 +28,10 @@ func _process(delta: float) -> void:
 		%Hammer.visible = true
 	else:
 		%Hammer.visible = false
+
+
+
+
+func _on_end_trigger_area_entered(area: Area2D) -> void:
+	print("ending woohoo")
+	
