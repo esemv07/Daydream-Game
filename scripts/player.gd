@@ -1,17 +1,18 @@
 extends CharacterBody2D
 
 
-@onready var animationplayer: AnimationPlayer = $Sprite2D/AnimationPlayer
 @onready var timer: Timer = $"../LightingTimer"
 @onready var light: PointLight2D = $PointLight2D
 @onready var health_bar: ProgressBar = $"../CanvasLayer/HealthBar"
 
 @export var speed: int = 100
+@export var REF_ARROW: PackedScene
 
 var direction: Vector2 = Vector2.ZERO
 var health: int = Globals.player_health
 var enemy_in_range = false
 var enemy_attack_cooldown = true
+var shooting = false
 
 var attack_ip = false
 var current_dir = "none"
@@ -38,6 +39,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	enemy_attack()
 	attack()
+	
+	if Input.is_action_just_pressed("projectile_attack"):
+		shoot_arrow()
 	
 	if (direction == Vector2.UP):
 		$Sprite2D.animation = "N"
@@ -91,4 +95,19 @@ func _on_deal_damage_timer_timeout() -> void:
 	Globals.player_current_attack = false
 	attack_ip = false
 	$DealDamageTimer.stop()
+
+
+func shoot_arrow():
+	print("shoooot")
 	
+	if REF_ARROW:
+		var arrow = REF_ARROW.instantiate()
+		get_tree().current_scene.add_child(arrow)
+		arrow.global_position = self.global_position
+		
+		var arrow_rotation = self.global_position.direction_to(get_global_mouse_position()).angle()
+		arrow.rotation = arrow_rotation
+
+
+func projectile():
+	pass
