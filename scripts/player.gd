@@ -112,7 +112,3 @@ func shoot_arrow():
 		
 		var arrow_rotation = self.global_position.direction_to(get_global_mouse_position()).angle()
 		arrow.rotation = arrow_rotation
-
-
-func projectile():
-	pass
