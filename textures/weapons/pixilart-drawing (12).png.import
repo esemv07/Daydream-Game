@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dotw543n8gj0x"
-path="res://.godot/imported/pixilart-drawing (1).png-7d0acffa13e94db79d93a1cf6a5ca3f8.ctex"
+uid="uid://doiojwu1cmg1d"
+path="res://.godot/imported/pixilart-drawing (12).png-154bbb9992c35500e2b204c302eef342.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/pixilart-drawing (1).png"
-dest_files=["res://.godot/imported/pixilart-drawing (1).png-7d0acffa13e94db79d93a1cf6a5ca3f8.ctex"]
+source_file="res://textures/weapons/pixilart-drawing (12).png"
+dest_files=["res://.godot/imported/pixilart-drawing (12).png-154bbb9992c35500e2b204c302eef342.ctex"]
 
 [params]
 

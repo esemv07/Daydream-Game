@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjiytrle70wmt"]
+
+[ext_resource type="Texture2D" uid="uid://cg04nnsvi0j6k" path="res://textures/weapons/pixilart-drawing (4) 2.png" id="1_crqbt"]
+[ext_resource type="Script" path="res://scenes/weapon.gd" id="1_xhpeb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s3eui"]
+radius = 34.2345
+
+[node name="Bow" type="Area2D"]
+script = ExtResource("1_xhpeb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s3eui")
+
+[node name="Pixilart-drawing(4)2" type="Sprite2D" parent="."]
+position = Vector2(10, 8)
+scale = Vector2(5, 5)
+texture = ExtResource("1_crqbt")

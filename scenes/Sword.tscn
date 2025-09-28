@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://crxpfte5g2vhr"]
+
+[ext_resource type="Script" path="res://scenes/weapon.gd" id="1_25sg5"]
+[ext_resource type="Texture2D" uid="uid://dotw543n8gj0x" path="res://textures/weapons/pixilart-drawing (1).png" id="1_woo4f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mpdvu"]
+height = 90.5097
+
+[node name="Sword" type="Area2D"]
+script = ExtResource("1_25sg5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.785398
+shape = SubResource("CapsuleShape2D_mpdvu")
+
+[node name="Pixilart-drawing(1)" type="Sprite2D" parent="."]
+position = Vector2(3, 3)
+scale = Vector2(4, 4)
+texture = ExtResource("1_woo4f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

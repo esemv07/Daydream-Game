@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://coeeym6atpi70"]
+
+[ext_resource type="Script" path="res://scenes/weapon.gd" id="1_23vf2"]
+[ext_resource type="Texture2D" uid="uid://blomytp7ogmyr" path="res://textures/weapons/pixilart-drawing (2).png" id="1_hyljw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vf7yw"]
+height = 79.196
+
+[node name="Spear" type="Area2D"]
+script = ExtResource("1_23vf2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.785398
+shape = SubResource("CapsuleShape2D_vf7yw")
+
+[node name="Pixilart-drawing(2)" type="Sprite2D" parent="."]
+position = Vector2(3, 3)
+scale = Vector2(4, 4)
+texture = ExtResource("1_hyljw")

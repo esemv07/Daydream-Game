@@ -10,6 +10,14 @@ var player_in_attack_zone = false
 var can_take_damage = true
 var proj_in_hitbox = false
 
+var weapons = {
+	"sword": "res://scenes/Sword.tscn",
+	"spear": "res://scenes/Spear_Collect.tscn",
+	"bow": "res://scenes/Bow.tscn",
+	"sword2": "res://scenes/Sword2.tscn",
+	"hammer": "",
+}
+
 
 func _physics_process(delta: float) -> void:
 	$HealthBar.value = health

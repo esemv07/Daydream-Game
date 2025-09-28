@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://beurr4640kar3"]
 
 [ext_resource type="Script" path="res://scripts/spear.gd" id="1_5xv7r"]
-[ext_resource type="Texture2D" uid="uid://blomytp7ogmyr" path="res://textures/pixilart-drawing (2).png" id="1_dp02x"]
+[ext_resource type="Texture2D" uid="uid://blomytp7ogmyr" path="res://textures/weapons/pixilart-drawing (2).png" id="1_dp02x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vdrt5"]
 radius = 27.0
