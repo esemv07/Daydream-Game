@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 	light.set_texture_scale(texture_scale)
 	
 	# Health
-	health_bar.value = health
+	health_bar.value = Globals.player_health
 
 
 func _physics_process(delta: float) -> void:
@@ -136,10 +136,10 @@ func _on_player_hitbox_body_exited(body: Node2D) -> void:
 
 func enemy_attack():
 	if enemy_in_range and enemy_attack_cooldown:
-		health -= 15
+		Globals.player_health -= 15
 		enemy_attack_cooldown = false
 		$AttackTimer.start()
-		if health <= 0:
+		if Globals.player_health <= 0:
 			$"../CanvasLayer/Littletole".visible = true
 			$"../CanvasLayer/Label".visible = true
 			$"../CanvasModulate".visible = false

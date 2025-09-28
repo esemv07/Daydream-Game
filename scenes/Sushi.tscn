@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://6qdonci6f4uf"]
+
+[ext_resource type="Script" path="res://scripts/food.gd" id="1_qpc4e"]
+[ext_resource type="Texture2D" uid="uid://oifafndfbddl" path="res://textures/food/pixilart-drawing (11).png" id="1_rhbx5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_esnya"]
+radius = 21.0
+
+[node name="Sushi" type="Area2D"]
+script = ExtResource("1_qpc4e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_esnya")
+
+[node name="Pixilart-drawing(11)" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_rhbx5")

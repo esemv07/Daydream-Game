@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://davvaka5glvee"]
+[gd_scene load_steps=26 format=4 uid="uid://davvaka5glvee"]
 
 [ext_resource type="PackedScene" uid="uid://dopdr3vvbca2n" path="res://scenes/Player.tscn" id="1_c5w8f"]
 [ext_resource type="PackedScene" uid="uid://cqfe7a065veqi" path="res://scenes/Enemy.tscn" id="1_feg2a"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://jmulqjjfsegx" path="res://textures/inventory/slot1.png" id="11_qmy6f"]
 [ext_resource type="Texture2D" uid="uid://dhku2byyt1nj" path="res://textures/inventory/slot2.png" id="12_3p2gp"]
 [ext_resource type="Texture2D" uid="uid://bp1hhorsdcvdn" path="res://textures/sacrificebutton.png" id="12_mwfav"]
+[ext_resource type="PackedScene" uid="uid://bu8x35i4qley5" path="res://scenes/Burger.tscn" id="16_ptce1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcsgt"]
 texture = ExtResource("2_1qvon")
@@ -154,6 +155,7 @@ wait_time = 45.0
 autostart = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.136826, 0.136826, 0.136826, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -265,3 +267,14 @@ theme_override_colors/font_color = Color(0.843137, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 150
 text = "You Died :("
+
+[node name="Food" type="Node" parent="."]
+
+[node name="Burger1" parent="Food" instance=ExtResource("16_ptce1")]
+position = Vector2(392, -115)
+
+[node name="Burger2" parent="Food" instance=ExtResource("16_ptce1")]
+position = Vector2(742, -153)
+
+[node name="Burger3" parent="Food" instance=ExtResource("16_ptce1")]
+position = Vector2(478, -298)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp7loutitn0s3"
-path="res://.godot/imported/pixilart-drawing (3).png-cc92565c1d5c6cab4e926e11990f88fc.ctex"
+uid="uid://dxapqb1cx2u3a"
+path="res://.godot/imported/pixilart-drawing (9).png-2a17d4377880276a8e85f9559aab9227.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pixilart-drawing (3).png"
-dest_files=["res://.godot/imported/pixilart-drawing (3).png-cc92565c1d5c6cab4e926e11990f88fc.ctex"]
+source_file="res://scripts/pixilart-drawing (9).png"
+dest_files=["res://.godot/imported/pixilart-drawing (9).png-2a17d4377880276a8e85f9559aab9227.ctex"]
 
 [params]
 

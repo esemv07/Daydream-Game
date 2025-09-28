@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://v8i38q166hsr"]
+
+[ext_resource type="Script" path="res://scripts/food.gd" id="1_etddw"]
+[ext_resource type="Texture2D" uid="uid://c5vi3f2tkcvla" path="res://textures/food/pixilart-drawing (10).png" id="1_xbery"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5xexu"]
+radius = 29.6142
+
+[node name="FriedEgg" type="Area2D"]
+script = ExtResource("1_etddw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5xexu")
+
+[node name="Pixilart-drawing(10)" type="Sprite2D" parent="."]
+position = Vector2(-2, -12)
+scale = Vector2(5, 5)
+texture = ExtResource("1_xbery")
