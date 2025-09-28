@@ -1,9 +1,9 @@
-[gd_scene load_steps=24 format=4 uid="uid://davvaka5glvee"]
+[gd_scene load_steps=25 format=4 uid="uid://davvaka5glvee"]
 
 [ext_resource type="PackedScene" uid="uid://dopdr3vvbca2n" path="res://scenes/Player.tscn" id="1_c5w8f"]
 [ext_resource type="PackedScene" uid="uid://cqfe7a065veqi" path="res://scenes/Enemy.tscn" id="1_feg2a"]
 [ext_resource type="Texture2D" uid="uid://cilhoxmw34bdc" path="res://testsheet.png" id="2_1qvon"]
-[ext_resource type="Script" uid="uid://cust5hbpsafy0" path="res://scripts/fire_bar.gd" id="4_886vo"]
+[ext_resource type="Script" path="res://scripts/fire_bar.gd" id="4_886vo"]
 [ext_resource type="Texture2D" uid="uid://dskosp5yy4qi5" path="res://textures/fire/fire1.png" id="5_bjd11"]
 [ext_resource type="Texture2D" uid="uid://vs2akb63ju0e" path="res://littletole.png" id="5_kgpqg"]
 [ext_resource type="Texture2D" uid="uid://iv687rxm8iqy" path="res://textures/fire/fire2.png" id="6_qmy6f"]
