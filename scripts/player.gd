@@ -139,6 +139,11 @@ func enemy_attack():
 		health -= 15
 		enemy_attack_cooldown = false
 		$AttackTimer.start()
+		if health <= 0:
+			$"../CanvasLayer/Littletole".visible = true
+			$"../CanvasLayer/Label".visible = true
+			$"../CanvasModulate".visible = false
+			queue_free()
 
 
 func _on_attack_timer_timeout() -> void:
@@ -174,7 +179,3 @@ func shoot_arrow():
 		
 		var arrow_rotation = self.global_position.direction_to(get_global_mouse_position()).angle()
 		arrow.rotation = arrow_rotation
-
-
-func projectile():
-	pass
