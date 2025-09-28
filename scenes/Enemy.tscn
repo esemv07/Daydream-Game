@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://cqfe7a065veqi"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_lbvcw"]
-[ext_resource type="Texture2D" uid="uid://vs2akb63ju0e" path="res://littletole.png" id="2_degrn"]
+[ext_resource type="Texture2D" uid="uid://cp7loutitn0s3" path="res://pixilart-drawing (3).png" id="2_cb7i3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u6t6s"]
-radius = 93.0054
+radius = 22.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0cch0"]
 radius = 391.128
@@ -19,17 +19,20 @@ bg_color = Color(0.882353, 0.25098, 0.0705882, 0.721569)
 bg_color = Color(0.0784314, 0.552941, 0.211765, 1)
 
 [node name="Enemy" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_lbvcw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-12, 40)
 shape = SubResource("CircleShape2D_u6t6s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
-scale = Vector2(2, 2)
-texture = ExtResource("2_degrn")
+scale = Vector2(6, 6)
+texture = ExtResource("2_cb7i3")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 2

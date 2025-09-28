@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=4 uid="uid://davvaka5glvee"]
+[gd_scene load_steps=20 format=4 uid="uid://davvaka5glvee"]
 
 [ext_resource type="PackedScene" uid="uid://dopdr3vvbca2n" path="res://scenes/Player.tscn" id="1_c5w8f"]
 [ext_resource type="PackedScene" uid="uid://cqfe7a065veqi" path="res://scenes/Enemy.tscn" id="1_feg2a"]
 [ext_resource type="Texture2D" uid="uid://cilhoxmw34bdc" path="res://testsheet.png" id="2_1qvon"]
 [ext_resource type="Script" path="res://scripts/fire_bar.gd" id="4_886vo"]
 [ext_resource type="Texture2D" uid="uid://dskosp5yy4qi5" path="res://textures/fire/fire1.png" id="5_bjd11"]
+[ext_resource type="Texture2D" uid="uid://vs2akb63ju0e" path="res://littletole.png" id="5_kgpqg"]
 [ext_resource type="Texture2D" uid="uid://iv687rxm8iqy" path="res://textures/fire/fire2.png" id="6_qmy6f"]
 [ext_resource type="Texture2D" uid="uid://dvcum3k34q1al" path="res://textures/fire/fire3.png" id="7_mwfav"]
 [ext_resource type="Texture2D" uid="uid://difjn378l4ldx" path="res://textures/fire/fire4.png" id="8_3p2gp"]
@@ -102,7 +103,6 @@ tile_map_data = PackedByteArray("AAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAAAAP7/AAAAAAE
 tile_set = SubResource("TileSet_c01mt")
 
 [node name="Enemy" parent="." instance=ExtResource("1_feg2a")]
-z_index = 1
 position = Vector2(433, 126)
 
 [node name="Player" parent="." instance=ExtResource("1_c5w8f")]
@@ -113,7 +113,6 @@ wait_time = 45.0
 autostart = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.239347, 0.239347, 0.239347, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -148,3 +147,27 @@ offset_bottom = 627.0
 theme_override_styles/background = SubResource("StyleBoxFlat_qlgm3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bsadn")
 show_percentage = false
+
+[node name="Littletole" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(568.177, 323.5)
+scale = Vector2(14.6456, 8.39744)
+texture = ExtResource("5_kgpqg")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.843137, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "You Died :("

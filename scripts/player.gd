@@ -72,6 +72,11 @@ func enemy_attack():
 		health -= 15
 		enemy_attack_cooldown = false
 		$AttackTimer.start()
+		if health <= 0:
+			$"../CanvasLayer/Littletole".visible = true
+			$"../CanvasLayer/Label".visible = true
+			$"../CanvasModulate".visible = false
+			queue_free()
 
 
 func _on_attack_timer_timeout() -> void:

@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @onready var player = $"../Player"
 
-var speed = 75
+var speed = 50
 var motion = Vector2.ZERO
 var health = 100
 var player_in_attack_zone = false
@@ -20,6 +20,12 @@ func _physics_process(delta: float) -> void:
 		var direction = position.direction_to(player.global_position).normalized()
 		velocity = direction * speed
 		move_and_slide()
+		
+		
+		if position > player.global_position:
+			$Sprite2D.flip_h = true
+		else:
+			$Sprite2D.flip_h = false
 
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
