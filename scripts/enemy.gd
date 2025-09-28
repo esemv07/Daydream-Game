@@ -8,6 +8,7 @@ var motion = Vector2.ZERO
 var health = 100
 var player_in_attack_zone = false
 var can_take_damage = true
+var proj_in_hitbox = false
 
 
 func _physics_process(delta: float) -> void:
@@ -36,11 +37,15 @@ func enemy():
 func _on_enemy_hitbox_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
 		player_in_attack_zone = true
+	if body.has_method("projectile"):
+		proj_in_hitbox = true
 
 
 func _on_enemy_hitbox_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):
 		player_in_attack_zone = false
+	if body.has_method("projectile"):
+		proj_in_hitbox = false
 
 
 func deal_with_damage():
@@ -49,7 +54,14 @@ func deal_with_damage():
 			health -= 20
 			$TakeDamageTimer.start()
 			can_take_damage = false
-			print(health)
+			if health <= 0:
+				self.queue_free()
+	elif proj_in_hitbox:
+		if can_take_damage:
+			health -= 20
+			$TakeDamageTimer.start()
+			can_take_damage = false
+			proj_in_hitbox = false
 			if health <= 0:
 				self.queue_free()
 
